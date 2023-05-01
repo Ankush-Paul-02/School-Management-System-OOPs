@@ -1,5 +1,5 @@
 public class Student {
-    
+
     private int id, grade, fees_paid, fees_total;
     private String name;
 
@@ -30,9 +30,63 @@ public class Student {
     /**
      * Add the fees to the feesPaid 
      * The school is going to receive the fund
-     * @param fees
+     * @param payFees
      */
-    public void updateFeesPaid(int fees) {
+    public void payFees(int fees) {
         fees_paid += fees;
+        School.updateTotalMoneyEarn(fees_paid);
     }
+
+
+    /**
+     * @return name of the student
+     */
+    public String getName() {
+        return name;
+    }
+    
+    /**
+     * @return name of the student 
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @return grade of the student
+     */
+    public int getGrade() {
+        return grade;
+    }
+
+    /**
+     * @return fees to be paid by the student
+     */
+    public int getFees_paid() {
+        return fees_paid;
+    }
+
+    /**
+     * @return the total fees of the student
+     */
+    public int getFees_total() {
+        return fees_total;
+    }
+
+    /**
+     * Return the remaining fees
+     * @return
+     */
+    public int getRemainingFees() {
+        return fees_total -= fees_paid;
+    }
+
+    /**
+     * This is way to represent a object
+     */
+    @Override
+    public String toString() {
+        return "Student's name: " +  name + ", Total fees paid so far: $" + fees_paid;
+    }
+
 }
